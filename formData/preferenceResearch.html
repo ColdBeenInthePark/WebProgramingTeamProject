@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수업 방식 및 시험 방법에 대한 선호도 조사</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyC-CzdYDnltjNgKfFAoFy6610RHh8eNskk",
+        authDomain: "webteamproject-681dc.firebaseapp.com",
+        projectId: "webteamproject-681dc",
+        storageBucket: "webteamproject-681dc.appspot.com",
+        messagingSenderId: "782261107500",
+        appId: "1:782261107500:web:2b314ac3c4a90ea6ba4a89",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="../JS/preferenceResearch.js"></script>
+    <script src="../JS/footer.js"></script>
+    <link rel="stylesheet" href="../main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="MBTImainContainer">
+      <nav class="navbar">
+        <h1><a href="/">HSWA</a><span>Hoseo Survey Web Application</span></h1>
+      </nav>
+      <div class="computerScienceMainContainer">
+        <div class="computerScienceUpContainer">
+          <h3>수업 방식 및 시험 방법에 대한 선호도 조사</h3>
+          <h4>본 설문은 개인정보 수집에 대한 동의를 포함합니다.</h4>
+        </div>
+        <form id="content"></form>
+        <div class="computerScienceBTN">
+          <button id="prev">Prev</button>
+          <button id="next">Next</button>
+        </div>
+      </div>
+      <div id="footerContainer"></div>
+    </div>
+  </body>
+</html>
