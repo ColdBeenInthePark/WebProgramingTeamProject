@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>컴퓨터 공학에 대해 얼마나 알고 계신가요?</title>
-    <script src="../JS/cs.js"></script>
+    <script src="../JS/cs.js" type="module"></script>
     <script src="../JS/footer.js"></script>
+    <script src="../JS/gpt.js" type="module"></script>
     <link rel="stylesheet" href="../main.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -16,12 +17,13 @@
     />
   </head>
   <body>
-    <div class="computerScienceContainer">
+    <div id="navBackground" class="computerScienceContainer">
       <nav class="navbar">
         <h1><a href="/">HSWA</a><span>Hoseo Survey Web Application</span></h1>
       </nav>
       <div class="computerScienceMainContainer">
-        <div class="computerScienceUpContainer">
+        <div id="loading"></div>
+        <div id="background" class="computerScienceUpContainer">
           <h3>컴퓨터 공학에 대해 얼마나 알고 계신가요?</h3>
           <h4>
             30점 이하: CS지식 하 31~70점: CS지식 중 71~85점: CS지식 상 86점
@@ -29,7 +31,7 @@
           </h4>
         </div>
         <form id="content"></form>
-        <div class="computerScienceBTN">
+        <div id="background" class="computerScienceBTN">
           <button id="prev">Prev</button>
           <button id="next">Next</button>
         </div>
