@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const message = await getResult(combinedString);
 
-    alert("chat-GPT의 답변을 기다리고 있습니다 소요 시간 5~10초");
+    alert("chat-GPT의 답변을 기다리고 있습니다. 소요시간: 약 5초");
     alert(message);
   }
 
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function getResult(request) {
-  const apiKey = null;
+  const apiKey = "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";
   const endpoint = "https://api.openai.com/v1/chat/completions";
 
   var message;
