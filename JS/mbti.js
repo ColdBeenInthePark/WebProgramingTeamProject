@@ -1,3 +1,5 @@
+import { getResult } from "./gpt.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const questions = [
     {
@@ -133,14 +135,33 @@ document.addEventListener("DOMContentLoaded", function () {
   // 선택이 끝나고 최종 결과를 보여주는 함수
   async function showResult() {
     const originalString = scores.join(", ");
+
     const additionalString =
       "성격을 가진 사람의 가장 적절한 하나의 MBTI는 뭘까? ISTP 처럼 딱 영어 4글자로만 답변";
+    const additionalString2 =
+      "의 mbti를 가진 사람은 어떤 분야의 개발자가 어울릴까?";
+
     const combinedString = originalString + additionalString;
 
-    const message = await getResult(combinedString);
+    let message = "";
+    let message2 = "";
 
-    alert("chat-GPT의 답변을 기다리고 있습니다. 소요시간: 약 5초");
-    alert(message);
+    try {
+      let loading = document.getElementById("loading");
+      loading.style.display = "block";
+
+      message = await getResult(combinedString);
+      const combinedString2 = message + additionalString2;
+      message2 = await getResult(combinedString2);
+    } catch (error) {
+      console.error("error : ", error);
+    } finally {
+      loading.style.display = "none";
+    }
+
+    localStorage.setItem("mbti", message);
+    localStorage.setItem("mbtiResult", message2);
+    window.location.href = "resultMBTI.html";
   }
 
   function showMBTI(result) {
@@ -173,41 +194,3 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   updateView();
 });
-
-async function getResult(request) {
-  const apiKey = "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";
-  const endpoint = "https://api.openai.com/v1/chat/completions";
-
-  var message;
-
-  await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: "You are a helpful assistant.",
-        },
-        {
-          role: "user",
-          content: request,
-        },
-      ],
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      message = data.choices[0].message.content;
-      console.log("Response:", message);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-
-  return message;
-}

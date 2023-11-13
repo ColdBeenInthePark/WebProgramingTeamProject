@@ -254,6 +254,17 @@ form > h5 {
   margin: auto;
 }
 
+#loading {
+  display: none;
+  width: 200px;
+  height: 200px;
+  background-image: url("/loading.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* computerScience */
 
 /* MBTI */
@@ -266,4 +277,40 @@ form > h5 {
 .MBTImainContent {
   width: 100%;
   height: 75%;
+}
+
+.darkOverlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.darkOverlay > * {
+  background: inherit;
+}
+
+.resultCSContainer {
+  width: 100%;
+  height: 100vh;
+}
+
+.resultBox {
+  width: 100%;
+  height: 80%;
+}
+
+.CSscore {
+  width: 60%;
+  height: 30%;
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.CStext {
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
 }

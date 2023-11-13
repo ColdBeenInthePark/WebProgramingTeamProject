@@ -1,6 +1,7 @@
+import { getResult } from "./gpt.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   let isShown = true;
-
   // 옵션 객체 생성
   function createOptions() {
     return {
@@ -115,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 점수 목록 담을 배열
   const scores = [];
+  const request = [];
   // 현재 질문 번호
   let questionIndex = 1;
 
@@ -146,10 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Form 내용 채우기
     contentForm.innerHTML = `
-<h5>${index}. ${question.question}</h5>
-${optionBuffer.join("\n")}
+<h5 id="question">${index}. ${question.question}</h5>
+${optionBuffer.join("\n")}`;
 
-`;
     // 만약 첫번째 거면 `이전` 버튼 숨기기
     if (index === 1) prevButton.style.display = "none";
     // 아니라면 `이전` 버튼 되돌리기
@@ -173,26 +174,49 @@ ${optionBuffer.join("\n")}
     updateView();
   };
   // 선택이 끝나고 최종 결과를 보여주는 함수
-  function showResult() {
+  async function showResult() {
+    const originalString = request.join(", ");
+    const additionalString =
+      "질문 뒤에 1은 아예 모름 2는 들어는 봤음 3은 무엇인지 알고 있음 4는 사용해 봤음 5는 사용해봤으며 남들에게 설명이 가능함을 뜻해 이사람의 강점과 보안점을 한글 100자 이내로 서술";
+    const combinedString = originalString + additionalString;
+    let message = "";
+
+    try {
+      let loading = document.getElementById("loading");
+      loading.style.display = "block";
+
+      message = await getResult(combinedString);
+    } catch (error) {
+      console.error("error : ", error);
+    } finally {
+      loading.style.display = "none";
+    }
+
     // 배열의 합 계산
     const totalScore = scores.reduce((acc, curr) => acc + parseInt(curr), 0);
-    alert(`최종 점수: ${totalScore}`);
+
+    await localStorage.setItem("score", totalScore);
+    await localStorage.setItem("result", message);
+    window.location.href = "resultCS.html";
   }
 
   nextButton.onclick = function () {
-    // 선택된 거 점수 가져오기
+    // 선택된 버튼 및 제목 가져오기
     let score = document.querySelector('input[name="option"]:checked');
+    let req = document.getElementById("question").innerHTML;
+
     // 선택된 게 없다면
     if (!score) {
-      // 경고 표시
       alert("선택지를 골라주세요.");
       return;
     }
     // 선택된 게 있다면 점수 불러오기
     score = score.value;
 
-    // 점수 목록에 push
+    request.push(req);
+    request.push(score);
     scores.push(score);
+
     // 질문 번호 하나 뒤에걸로
     ++questionIndex;
     // 만약 마지막 질문이면 최종 결과를 보여줌
