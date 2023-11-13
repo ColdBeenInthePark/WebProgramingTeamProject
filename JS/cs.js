@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       question:
-        "각 분야마다 필요한 컴퓨터 언어가 무엇인지 물어보면 답할 수 있습니까?",
+        "웹을 개발하기 위해서는 3가지의 언어를 알아야합니다. 무엇인지 알고 있습니까?",
       options: createOptions(),
     },
     {
       question:
-        "컴퓨터 공학에서 현재 가장 인기와 관심이 집중되어 있는 분야가 무엇인지 알고있습니까?",
+        "웹에서 하이퍼링크 텍스트의 색이 3가지가 있습니다.각각 BLUE,PURPLE,RED가 무슨역할을 하는지 알고 있습니까?",
       options: createOptions(),
     },
     {
@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       question:
-        "&quot프로그래밍 언어의 선택&quot이 프로젝트에 어떤 영향을 미칠까요?",
+        "정렬 알고리즘 중 &quot퀵 소트(Quick Sort)&quot와 &quot머지 소트(Merge Sort)&quot의 차이점에 대해 알고 있습니까?",
       options: createOptions(),
     },
     {
       question:
-        "&quot데이터베이스&quot의 역할과 여러 종류에 대해 설명할 수 있을까요?",
+        "&quot이진 탐색 알고리즘&quot은 어떻게 동작하며, 어떤 종류의 문제에서 유용하게 활용될 수 있는지 알고 있습니까?",
       options: createOptions(),
     },
     {
@@ -94,22 +94,21 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       question:
-        "&quot컴퓨터 공학에서의 윤리&quot에 대한 대표적 고려 사항(3가지 이상)을 알고 있습니까?",
+        "상용 관용 암호 방식에서  SEED부분의 F힘수와 G힘수에 대해 알고 있습니까?",
       options: createOptions(),
     },
     {
       question:
-        "&quot컴퓨터 공학에서의 윤리&quot에 대한 대표적 고려 사항(3가지 이상)을 알고 있습니까?",
+        "암호학에서 공개키 암호 방식과 대칭키 암호방식에 대해 알고 있습니까?",
       options: createOptions(),
     },
     {
       question:
-        "&quot컴퓨터 공학에서의 윤리&quot에 대한 대표적 고려 사항(3가지 이상)을 알고 있습니까?",
+        "암호방식 중 하나인 RSA암호시스템은 무슨 문제점을 보완하기 위해 개발되었으며,주로 어디에 사용하는지 알고 있습니까?",
       options: createOptions(),
     },
     {
-      question:
-        "&quot컴퓨터 공학에서의 윤리&quot에 대한 대표적 고려 사항(3가지 이상)을 알고 있습니까?",
+      question: "&quotSQL인젝션 공격&quot을 알고 있습니까?",
       options: createOptions(),
     },
   ];
